@@ -49,17 +49,17 @@ Check the following:
 + Can you can access another part of the instance metadata service \(IMDS\)? If not, check that you have no firewall rules blocking access to requests to the IMDS\.
 
   ```
-  [ec2-user@domU-12-31-39-0A-8D-DE ~]$ GET http://169.254.169.254/latest/meta-data/hostname; echo
+  [ec2-user@domU-12-31-39-0A-8D-DE ~]$ curl http://169.254.169.254/latest/meta-data/hostname; echo
   ```
 + Does the `iam` subtree of the IMDS exist? If not, verify that your instance has an IAM instance profile associated with it by calling `ec2:DescribeInstances`\.
 
   ```
-  [ec2-user@domU-12-31-39-0A-8D-DE ~]$ GET http://169.254.169.254/latest/meta-data/iam; echo
+  [ec2-user@domU-12-31-39-0A-8D-DE ~]$ curl http://169.254.169.254/latest/meta-data/iam; echo
   ```
 + Check the `info` document in the IAM subtree for an error\. If you have an error, see [What do the errors from the `info` document in the IAM subtree mean?](#troubleshoot_iam-ec2_errors-info-doc) for more information\.
 
   ```
-  [ec2-user@domU-12-31-39-0A-8D-DE ~]$ GET http://169.254.169.254/latest/meta-data/iam/info; echo
+  [ec2-user@domU-12-31-39-0A-8D-DE ~]$ curl http://169.254.169.254/latest/meta-data/iam/info; echo
   ```
 
 ## What do the errors from the `info` document in the IAM subtree mean?<a name="troubleshoot_iam-ec2_errors-info-doc"></a>
